@@ -1,0 +1,207 @@
+﻿apiVersion: repo-manager.pulpproject.org/v1beta2
+kind: Pulp
+metadata:
+  creationTimestamp: '2024-03-26T11:26:58Z'
+  generation: 17
+  managedFields:
+    - apiVersion: repo-manager.pulpproject.org/v1beta2
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:admin_password_secret': {}
+          'f:container_token_secret': {}
+          'f:db_fields_encryption_secret': {}
+          'f:pulp_secret_key': {}
+      manager: manager
+      operation: Update
+      time: '2024-03-26T11:26:58Z'
+    - apiVersion: repo-manager.pulpproject.org/v1beta2
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:mount_trusted_ca': {}
+          'f:deployment_type': {}
+          'f:image_version': {}
+          'f:web':
+            .: {}
+            'f:replicas': {}
+          'f:pulp_settings':
+            .: {}
+            'f:allowed_export_paths': {}
+            'f:allowed_import_paths': {}
+            'f:api_root': {}
+            'f:pypi_api_hostname': {}
+          'f:content':
+            .: {}
+            'f:gunicorn_timeout': {}
+            'f:gunicorn_workers': {}
+            'f:replicas': {}
+            'f:resource_requirements':
+              .: {}
+              'f:limits':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+              'f:requests':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+          'f:telemetry':
+            .: {}
+            'f:enabled': {}
+            'f:exporter_otlp_protocol': {}
+          'f:api':
+            .: {}
+            'f:gunicorn_timeout': {}
+            'f:gunicorn_workers': {}
+            'f:replicas': {}
+          'f:image': {}
+          'f:container_auth_private_key_name': {}
+          .: {}
+          'f:cache':
+            .: {}
+            'f:enabled': {}
+          'f:worker':
+            .: {}
+            'f:replicas': {}
+            'f:resource_requirements':
+              .: {}
+              'f:limits':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+              'f:requests':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+          'f:route_host': {}
+          'f:image_pull_policy': {}
+          'f:image_web_version': {}
+          'f:ingress_type': {}
+          'f:image_web': {}
+          'f:container_auth_public_key_name': {}
+          'f:object_storage_s3_secret': {}
+      manager: Mozilla
+      operation: Update
+      time: '2024-03-26T20:39:39Z'
+    - apiVersion: repo-manager.pulpproject.org/v1beta2
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:deployment_type': {}
+          'f:image': {}
+          'f:container_token_secret': {}
+          'f:conditions': {}
+          .: {}
+          'f:last_deployment_update': {}
+          'f:managed_cache_enabled': {}
+          'f:admin_password_secret': {}
+          'f:pulp_secret_key': {}
+          'f:db_fields_encryption_secret': {}
+          'f:ingress_type': {}
+          'f:object_storage_s3_secret': {}
+      manager: manager
+      operation: Update
+      subresource: status
+      time: '2024-03-26T20:45:53Z'
+  name: example
+  namespace: pulp
+  resourceVersion: '7722435'
+  uid: 3b5729d9-ec87-41f9-b1d4-a835a7eebf91
+spec:
+  container_auth_private_key_name: container_auth_private_key.pem
+  cache:
+    enabled: true
+  ingress_type: Route
+  admin_password_secret: example-admin-password
+  pulp_secret_key: example-secret-key
+  db_fields_encryption_secret: example-db-fields-encryption
+  container_auth_public_key_name: container_auth_public_key.pem
+  image_pull_policy: IfNotPresent
+  image_web_version: stable
+  object_storage_s3_secret: test-s3
+  mount_trusted_ca: false
+  image_web: quay.io/pulp/pulp-web
+  deployment_type: pulp
+  image_version: stable
+  container_token_secret: example-container-auth
+  web:
+    replicas: 1
+  content:
+    gunicorn_timeout: 90
+    gunicorn_workers: 2
+    replicas: 2
+    resource_requirements:
+      limits:
+        cpu: 800m
+        memory: 1Gi
+      requests:
+        cpu: 150m
+        memory: 256Mi
+  pulp_settings:
+    allowed_export_paths:
+      - /tmp
+    allowed_import_paths:
+      - /tmp
+    api_root: /pulp/
+    pypi_api_hostname: 'https://pulp.apps.cluster-87xpx.87xpx.sandbox1137.opentlc.com'
+  telemetry:
+    enabled: false
+    exporter_otlp_protocol: http/protobuf
+  api:
+    gunicorn_timeout: 90
+    gunicorn_workers: 2
+    replicas: 1
+  image: quay.io/pulp/pulp-minimal
+  route_host: pulp.apps.cluster-87xpx.87xpx.sandbox1137.opentlc.com
+  worker:
+    replicas: 2
+    resource_requirements:
+      limits:
+        cpu: 800m
+        memory: 1Gi
+      requests:
+        cpu: 150m
+        memory: 256Mi
+status:
+  ingress_type: Route
+  managed_cache_enabled: true
+  admin_password_secret: example-admin-password
+  pulp_secret_key: example-secret-key
+  db_fields_encryption_secret: example-db-fields-encryption
+  object_storage_s3_secret: test-s3
+  deployment_type: pulp
+  container_token_secret: example-container-auth
+  conditions:
+    - lastTransitionTime: '2024-03-26T20:45:53Z'
+      message: All tasks ran successfully
+      reason: OperatorFinishedExecution
+      status: 'True'
+      type: Pulp-Operator-Finished-Execution
+    - lastTransitionTime: '2024-03-26T20:45:22Z'
+      message: All Api tasks ran successfully
+      reason: ApiTasksFinished
+      status: 'True'
+      type: Pulp-API-Ready
+    - lastTransitionTime: '2024-03-26T11:26:58Z'
+      message: All Database tasks ran successfully
+      reason: DatabaseTasksFinished
+      status: 'True'
+      type: Pulp-Database-Ready
+    - lastTransitionTime: '2024-03-26T20:45:52Z'
+      message: All Content tasks ran successfully
+      reason: ContentTasksFinished
+      status: 'True'
+      type: Pulp-Content-Ready
+    - lastTransitionTime: '2024-03-26T20:45:38Z'
+      message: All Worker tasks ran successfully
+      reason: WorkerTasksFinished
+      status: 'True'
+      type: Pulp-Worker-Ready
+    - lastTransitionTime: '2024-03-26T11:28:21Z'
+      message: All Route tasks ran successfully
+      reason: RouteTasksFinished
+      status: 'True'
+      type: Pulp-Route-Ready
+  last_deployment_update: '2024-03-26T20:45:08Z'
+  image: 'quay.io/pulp/pulp-minimal:stable'
